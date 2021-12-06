@@ -17,13 +17,13 @@ jobs:
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKERHUB_USERNAME}}
-        DOCKER_PASSWORD: ${{secrets.DOCKERHUB_TOKEN}}
+        DOCKER_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag zoneminder:$(date +%s)
+      run: docker build . --file Dockerfile --tag juliendum/zoneminder:$(date +%s)
       
     - name: Docker Push 
-      run: docker push ${{secrets.DOCKERHUB_USERNAME}}/zoneminder
+      run: docker push docker push juldum/zoneminder
       
